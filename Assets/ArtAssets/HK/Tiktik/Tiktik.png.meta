@@ -1,0 +1,630 @@
+fileFormatVersion: 2
+guid: d5c54ce07145f43309bc0a1fa6a88868
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4176767417266672833
+    second: PC Computer - Hollow Knight - Tiktik_0
+  - first:
+      213: 1444152391171561321
+    second: PC Computer - Hollow Knight - Tiktik_1
+  - first:
+      213: 2986916303998419515
+    second: PC Computer - Hollow Knight - Tiktik_2
+  - first:
+      213: 1416441193223387667
+    second: PC Computer - Hollow Knight - Tiktik_3
+  - first:
+      213: -7135859195918999151
+    second: PC Computer - Hollow Knight - Tiktik_4
+  - first:
+      213: -6535810087548853305
+    second: PC Computer - Hollow Knight - Tiktik_5
+  - first:
+      213: 3546792625781833601
+    second: PC Computer - Hollow Knight - Tiktik_6
+  - first:
+      213: 8341777270006180894
+    second: PC Computer - Hollow Knight - Tiktik_7
+  - first:
+      213: -5251163596180646624
+    second: PC Computer - Hollow Knight - Tiktik_8
+  - first:
+      213: -2400243959764476646
+    second: PC Computer - Hollow Knight - Tiktik_9
+  - first:
+      213: 4833167911360117336
+    second: PC Computer - Hollow Knight - Tiktik_10
+  - first:
+      213: -7164849997822592515
+    second: PC Computer - Hollow Knight - Tiktik_11
+  - first:
+      213: 2583915807263415058
+    second: PC Computer - Hollow Knight - Tiktik_12
+  - first:
+      213: -9096121141831030198
+    second: PC Computer - Hollow Knight - Tiktik_13
+  - first:
+      213: 6222550185766560220
+    second: PC Computer - Hollow Knight - Tiktik_14
+  - first:
+      213: 4179201599120866498
+    second: PC Computer - Hollow Knight - Tiktik_15
+  - first:
+      213: 4353496419215669032
+    second: PC Computer - Hollow Knight - Tiktik_16
+  - first:
+      213: -4909513427098609341
+    second: PC Computer - Hollow Knight - Tiktik_17
+  - first:
+      213: -4562213167144966670
+    second: Tiktik_0
+  - first:
+      213: 9011215994842963232
+    second: Tiktik_1
+  - first:
+      213: 2800219279044008273
+    second: Tiktik_2
+  - first:
+      213: -1135935798420933029
+    second: Tiktik_3
+  - first:
+      213: -1281022965034592927
+    second: Tiktik_4
+  - first:
+      213: -6569457132852687312
+    second: Tiktik_5
+  - first:
+      213: 8529492440404045168
+    second: Tiktik_6
+  - first:
+      213: 6767782665668652327
+    second: Tiktik_7
+  - first:
+      213: -6308080418601848333
+    second: Tiktik_8
+  - first:
+      213: -6406112265902420861
+    second: Tiktik_9
+  - first:
+      213: 1161568896379201328
+    second: Tiktik_10
+  - first:
+      213: -6561808251538388415
+    second: Tiktik_11
+  - first:
+      213: 7116910646393551240
+    second: Tiktik_12
+  - first:
+      213: -3723162668245050116
+    second: Tiktik_13
+  - first:
+      213: 2140301994137472207
+    second: Tiktik_14
+  - first:
+      213: -2062378373957001895
+    second: Tiktik_15
+  - first:
+      213: 762225231092815624
+    second: Tiktik_16
+  - first:
+      213: 8215329403624966788
+    second: Tiktik_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tiktik_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 429
+        width: 89
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 877bb4c5769704fdb92f293b2730f30f
+      internalID: -4562213167144966670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_1
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 430
+        width: 90
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7691789114d48aab82faa7327e840b
+      internalID: 9011215994842963232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_2
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 430
+        width: 91
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c900145c5d77e4084a85de35042f8484
+      internalID: 2800219279044008273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_3
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 431
+        width: 90
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c832b1470bdf4744b4d3aa15a94a1f0
+      internalID: -1135935798420933029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 327
+        width: 97
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 948f9a1a325464eb7b76dc02250e1260
+      internalID: -1281022965034592927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_5
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 328
+        width: 93
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e375ebe5c392c462fb6c8b1345f61ed2
+      internalID: -6569457132852687312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_6
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 212
+        width: 89
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa286359e5ba0413584cb352f7d3b347
+      internalID: 8529492440404045168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_7
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 212
+        width: 79
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 950e59aa678fb4e5aa37f546f8bbf07a
+      internalID: 6767782665668652327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_8
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 215
+        width: 85
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 362134745e45c493785708c6cd35aa8a
+      internalID: -6308080418601848333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_9
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 217
+        width: 90
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d874cc92dc18420e862f70f742e684b
+      internalID: -6406112265902420861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_10
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 217
+        width: 90
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3748537c0b524ded9b75c85e71fb703
+      internalID: 1161568896379201328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_11
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 211
+        width: 79
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f99fac410c3564c59984f7de4ac40348
+      internalID: -6561808251538388415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_12
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 214
+        width: 85
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4330fd9da54664387b138ed3b53c8326
+      internalID: 7116910646393551240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_13
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 118
+        width: 91
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee12f47cef9f442ebf8087a61e7c7c4
+      internalID: -3723162668245050116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_14
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 116
+        width: 102
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f475be33277904384a61b7b956446412
+      internalID: 2140301994137472207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_15
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 11
+        width: 97
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5678aa02070543358ca5297125d7637
+      internalID: -2062378373957001895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_16
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 10
+        width: 78
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6747e0d7f55fa4f2a98c2b8e7527f196
+      internalID: 762225231092815624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiktik_17
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 4
+        width: 75
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1803b767f435f450c91cb679d9cd2d75
+      internalID: 8215329403624966788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
