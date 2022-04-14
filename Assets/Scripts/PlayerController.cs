@@ -152,9 +152,15 @@ public class PlayerController : MonoBehaviour
         set
         {
             hp = value;
-            StartCoroutine("Hurt"); //本来写在OnCollisionEnter2D的，但是Mosnter003是Trigger //还有一个解决方案就是Monster003直接调用角色的"Hurt"
+            if (hp > 0)
+            {
+                StartCoroutine("Hurt");
+            }
+            else if (hp <= 0)
+            {
+                StartCoroutine("Dead");
+            }
             RefreshHPUI();
-            if (hp <= 0) StartCoroutine("Dead");
         }
     }
     #endregion

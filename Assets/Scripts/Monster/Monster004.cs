@@ -45,28 +45,15 @@ public class Monster004 : MonoBehaviour
 
     //AI
     private Transform player_Transform; //不完全是角色的Transform，因为角色中心点太低了，这个读取的是角色的子物体Forward Check(NearUp)
-    private Transform parent_Transform; 
+    [SerializeField] private Transform groundCheck_Transform;
     private AIPath m_AIPath;
     private AIDestinationSetter m_AIDestinationSetter;
     private bool isLockPlayer; //没有锁定到角色时，距离3.5才会开始锁定并跟着角色，如果锁定了，角色距离9才会取消锁定和跟着角色
-    [SerializeField] private bool afterDeadGroundCheck; //和groundCheck同位置
     private LayerMask whatIsGround = 1 << 6;
 
     void Start()
     {
-        m_Transform = gameObject.GetComponent<Transform>();
-        m_Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-        m_SkeletonAnimation = gameObject.GetComponent<SkeletonAnimation>();
-        bloodEffect = Resources.Load<GameObject>("Prefabs/Effects/Blood");
-
-        //AI
-        player_Transform = GameObject.FindGameObjectWithTag("Player").transform.Find("Forward Check(NearUp)").GetComponent<Transform>(); //不完全是角色的Transform，因为角色中心点太低了，这个读取的是角色的子物体Forward Check(NearUp)
-        parent_Transform = m_Transform.parent;
-        m_AIPath = m_Transform.parent.parent.GetComponent<AIPath>();
-        m_AIDestinationSetter = m_Transform.parent.parent.GetComponent<AIDestinationSetter>();
-
-        m_AIDestinationSetter.target = player_Transform;
-        m_SkeletonAnimation.AnimationState.SetAnimation(0, "Idle", true).TimeScale = 2f;
+        Init();
     }
 
     void Update()
@@ -83,13 +70,13 @@ public class Monster004 : MonoBehaviour
             
             if (isLockPlayer == true)
             {
-                if((player_Transform.position.x - parent_Transform.position.x) > 0 && parent_Transform.eulerAngles != new Vector3(0, 0, 0))
+                if((player_Transform.position.x - m_Transform.position.x) > 0 && m_Transform.eulerAngles != new Vector3(0, 0, 0))
                 {
-                    parent_Transform.eulerAngles = new Vector3(0, 0, 0);
+                    m_Transform.eulerAngles = new Vector3(0, 0, 0);
                 }
-                else if((player_Transform.position.x - parent_Transform.position.x) < 0 && parent_Transform.eulerAngles != new Vector3(0, 180, 0))
+                else if((player_Transform.position.x - m_Transform.position.x) < 0 && m_Transform.eulerAngles != new Vector3(0, 180, 0))
                 {
-                    parent_Transform.eulerAngles = new Vector3(0, 180, 0);
+                    m_Transform.eulerAngles = new Vector3(0, 180, 0);
                 }
 
                 if (m_AIPath.remainingDistance > 9.5f)
@@ -103,10 +90,25 @@ public class Monster004 : MonoBehaviour
 
         if (isLife == false)
         {
-            afterDeadGroundCheck = Physics2D.OverlapBox(m_Transform.position, new Vector2(0.1f, 0.1f), 0, whatIsGround);
-
-            if (afterDeadGroundCheck == true) m_Rigidbody2D.bodyType = RigidbodyType2D.Static;
+            if (Physics2D.OverlapBox(groundCheck_Transform.position, new Vector2(0.1f, 0.1f), 0, whatIsGround)) m_Rigidbody2D.bodyType = RigidbodyType2D.Static;
         }
+    }
+
+    private void Init()
+    {
+        m_Transform = gameObject.GetComponent<Transform>();
+        m_Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        m_SkeletonAnimation = gameObject.GetComponent<SkeletonAnimation>();
+        bloodEffect = Resources.Load<GameObject>("Prefabs/Effects/Blood");
+
+        //AI
+        player_Transform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); //不完全是角色的Transform，因为角色中心点太低了，这个读取的是角色的子物体Forward Check(NearUp)
+        groundCheck_Transform = m_Transform.Find("Ground Check").GetComponent<Transform>();
+        m_AIPath = m_Transform.GetComponent<AIPath>();
+        m_AIDestinationSetter = m_Transform.GetComponent<AIDestinationSetter>();
+
+        m_AIDestinationSetter.target = player_Transform;
+        m_SkeletonAnimation.AnimationState.SetAnimation(0, "Idle", true).TimeScale = 2f;
     }
 
     private void Damage(int damage)
@@ -128,9 +130,10 @@ public class Monster004 : MonoBehaviour
         m_SkeletonAnimation.AnimationState.SetAnimation(0, "Dead", false).TimeScale = 1.5f;
         m_Rigidbody2D.gravityScale = 1.5f;
         isLife = false;
-        GameObject.Destroy(gameObject.GetComponent<BoxCollider2D>());
+        GameObject.Destroy(gameObject.GetComponent<CircleCollider2D>());
         GameObject.Destroy(m_AIPath);
         GameObject.Destroy(m_AIDestinationSetter);
+        
     }
 
     private void Flip()
@@ -146,7 +149,7 @@ public class Monster004 : MonoBehaviour
         facingRight = !facingRight;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -154,10 +157,9 @@ public class Monster004 : MonoBehaviour
         }
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawWireCube(patrol_Left + Vector2.up / 2, new Vector2(1, 1));
-    //    Gizmos.DrawWireCube(patrol_Right + Vector2.up / 2, new Vector2(1, 1));
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(groundCheck_Transform.position, new Vector2(0.1f, 0.1f));
+    }
 }

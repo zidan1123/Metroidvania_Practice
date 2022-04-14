@@ -104,9 +104,9 @@ public class Monster002 : MonoBehaviour
 
         //AI
         m_SkeletonAnimation.AnimationState.SetAnimation(0, "Walk", true).TimeScale = 1.5f;
-        forwardDistanceDetector = m_Transform.Find("Body/ForwardDistanceDetector");
-        forwardCheck_Middle = m_Transform.Find("Body/Middle Of Forward Check");
-        backwardCheck_Middle = m_Transform.Find("Body/Middle Of Backward Check");
+        forwardDistanceDetector = m_Transform.Find("ForwardDistanceDetector");
+        forwardCheck_Middle = m_Transform.Find("Middle Of Forward Check");
+        backwardCheck_Middle = m_Transform.Find("Middle Of Backward Check");
 
         Physics2D.queriesStartInColliders = false;
         sprintTime = startSprintTime;

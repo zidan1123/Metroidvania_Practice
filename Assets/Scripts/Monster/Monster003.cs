@@ -52,7 +52,6 @@ public class Monster003 : MonoBehaviour
     [SerializeField] private bool isGroundCheck = true;
     [SerializeField] private bool groundCheck;
     [SerializeField] private bool startGroundCheck;
-    [SerializeField] private bool afterDeadGroundCheck; //和groundCheck同位置
     private LayerMask whatIsGround = 1 << 6;
 
     [SerializeField] private Transform wallCheck_Transform;
@@ -101,7 +100,7 @@ public class Monster003 : MonoBehaviour
             }
 
             //Reach Target
-            if (m_Transform.rotation == targetRot && isReachTargetPos == false)
+            if (m_Transform.rotation == targetRot && isReachTargetRot == false)
             {
                 ReachTargetRot();
             }
@@ -114,9 +113,7 @@ public class Monster003 : MonoBehaviour
 
         if (isLife == false)
         {
-            afterDeadGroundCheck = Physics2D.OverlapBox(groundCheck_Transform.position, new Vector2(0.1f, 0.1f), 0, whatIsGround);
-
-            if (afterDeadGroundCheck == true) m_Rigidbody2D.bodyType = RigidbodyType2D.Static;
+            if (Physics2D.OverlapBox(groundCheck_Transform.position, new Vector2(0.1f, 0.1f), 0, whatIsGround)) m_Rigidbody2D.bodyType = RigidbodyType2D.Static;
         }
     }
 
@@ -129,9 +126,9 @@ public class Monster003 : MonoBehaviour
         m_Animator = gameObject.GetComponent<Animator>();
         m_SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        wallCheck_Transform = m_Transform.Find("Body/Wall Check");
-        groundCheck_Transform = m_Transform.Find("Body/Ground Check");
-        startGroundCheck_Transform = m_Transform.Find("Body/Start Ground Check");
+        wallCheck_Transform = m_Transform.Find("Wall Check");
+        groundCheck_Transform = m_Transform.Find("Ground Check");
+        startGroundCheck_Transform = m_Transform.Find("Start Ground Check");
     }
 
     private void Move()
@@ -206,19 +203,19 @@ public class Monster003 : MonoBehaviour
         switch (index) //0:right, 1:up, 2:left, 3:down
         {
             case 0:
-                targetPos = m_Transform.position + Vector3.right;
-                //Debug.Log("RIGHT:" + targetPos);
+                targetPos = m_Transform.position + Vector3.right * 0.8f; //乘上0.8可以解决此怪物在一层的平台转弯bug。(targetPos太远的话，不能即使开始检测groundCheck_Transform)
+                //Debug.Log("RIGHT:" + targetPos);                       //旧版没有这个bug，因为有另外一个bug导致一直执行ReachTargetRot，使每当startGroundCheck_Transform开始检测时就会让groundCheck_Transform开始检测)
                 break;
             case 1:
-                targetPos = m_Transform.position + Vector3.up;
+                targetPos = m_Transform.position + Vector3.up * 0.8f;
                 //Debug.Log("up:" + targetPos);
                 break;
             case 2:
-                targetPos = m_Transform.position + Vector3.left;
+                targetPos = m_Transform.position + Vector3.left * 0.8f;
                 //Debug.Log("left:" + targetPos);
                 break;
             case 3:
-                targetPos = m_Transform.position + Vector3.down;
+                targetPos = m_Transform.position + Vector3.down * 0.8f;
                 //Debug.Log("down:" + targetPos);
                 break;
         }
@@ -237,7 +234,7 @@ public class Monster003 : MonoBehaviour
     {
         //Debug.Log("ReachTargetRot");
         isWallCheck = true;
-        if (startGroundCheck) isGroundCheck = true;
+        if (startGroundCheck) isGroundCheck = true; 
         isReachTargetRot = true;
     }
 

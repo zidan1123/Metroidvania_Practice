@@ -59,8 +59,8 @@ public class Monster001 : MonoBehaviour
         bloodEffect = Resources.Load<GameObject>("Prefabs/Effects/Blood");
 
         //AI
-        patrol_Left = m_Transform.Find("Body/Patrol_Left").position;
-        patrol_Right = m_Transform.Find("Body/Patrol_Right").position;
+        patrol_Left = m_Transform.Find("Patrol_Left").position;
+        patrol_Right = m_Transform.Find("Patrol_Right").position;
         targetPosition = patrol_Right;
         m_SkeletonAnimation.AnimationState.SetAnimation(0, "Walk", true).TimeScale = 1.5f;
     }
@@ -145,7 +145,8 @@ public class Monster001 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        m_Rigidbody2D.velocity = Vector2.zero; //确保怪物不被主角撞飞
+        if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerController>().HP -= this.Attack;
         }
