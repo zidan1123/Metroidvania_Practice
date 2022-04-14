@@ -259,13 +259,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   attack: 1
-  speed: 2
+  speed: 1.5
   isWallCheck: 1
   wallCheck: 0
   isGroundCheck: 1
   groundCheck: 0
   startGroundCheck: 0
-  afterDeadGroundCheck: 0
   wallCheck_Transform: {fileID: 632339476}
   groundCheck_Transform: {fileID: 86772275}
   startGroundCheck_Transform: {fileID: 496435844}

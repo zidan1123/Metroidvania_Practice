@@ -98,12 +98,12 @@ public class Monster004 : MonoBehaviour
     {
         m_Transform = gameObject.GetComponent<Transform>();
         m_Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-        m_SkeletonAnimation = gameObject.GetComponent<SkeletonAnimation>();
+        m_SkeletonAnimation = m_Transform.Find("Body").GetComponent<SkeletonAnimation>();
         bloodEffect = Resources.Load<GameObject>("Prefabs/Effects/Blood");
 
         //AI
-        player_Transform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); //不完全是角色的Transform，因为角色中心点太低了，这个读取的是角色的子物体Forward Check(NearUp)
-        groundCheck_Transform = m_Transform.Find("Ground Check").GetComponent<Transform>();
+        player_Transform = GameObject.FindGameObjectWithTag("Player").transform.Find("Forward Check(NearUp)").GetComponent<Transform>(); //不完全是角色的Transform，因为角色中心点太低了，这个读取的是角色的子物体Forward Check(NearUp)
+        groundCheck_Transform = m_Transform.Find("Body/Ground Check").GetComponent<Transform>();
         m_AIPath = m_Transform.GetComponent<AIPath>();
         m_AIDestinationSetter = m_Transform.GetComponent<AIDestinationSetter>();
 
