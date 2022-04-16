@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour
     //public static PlayerController Instance;
 
     #region Fields
+    //Ability
+    [Header("Ability")]
+    [SerializeField] bool isObtainDash;
+    [SerializeField] bool isObtainDoubleJump;
+    [SerializeField] bool isObtainWallSlide;
+
     //Component
     private Transform m_Transform;
     private Rigidbody2D m_Rigidbody2D;
@@ -111,6 +117,11 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Attributes
+    //Ability
+    public bool IsObtainDash { get { return isObtainDash; } set { isObtainDash = value; } }
+    public bool IsObtainDoubleJump { get { return isObtainDoubleJump; } set { isObtainDoubleJump = value; } }
+    public bool IsObtainWallSlide { get { return isObtainWallSlide; } set { isObtainWallSlide = value; } }
+
     //Move
     public bool CanMove { get { return canMove; } set { canMove = value; } }
     public bool CanFlip { get { return canFlip; } set { canFlip = value; } }
@@ -293,7 +304,7 @@ public class PlayerController : MonoBehaviour
             }
 
             //WallSlide
-            if (isSliding == false && isGround == false && isWall == true && m_Rigidbody2D.velocity.y < 0)  //进入滑墙状态
+            if (isSliding == false && isGround == false && isWall == true && m_Rigidbody2D.velocity.y < 0  && isObtainWallSlide)  //进入滑墙状态
             {
                 isSliding = true;
                 isAfterAirDash = false;
@@ -384,7 +395,7 @@ public class PlayerController : MonoBehaviour
                 //CancelInvoke("PlayFootStepAudio");
             }
         }                                                                                  //↓滑墙时同时按跳和跳跃方向的方向键，会出现转身了才跳的情况，所以滑墙跳时确保脸靠墙。
-        else if (isSliding == true && Input.GetKeyDown(KeyCode.Space) && canJump == true && isWall == true)  //WallSlideJump
+        else if (isSliding == true && Input.GetKeyDown(KeyCode.Space) && canJump == true && isWall == true && isObtainWallSlide)  //WallSlideJump
         {
             m_Animator.SetBool("Jump", true);
             m_Animator.SetBool("WallSlide", false);
@@ -418,7 +429,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //DoubleJump                                                    //↓为了确保能普通跳就不二段跳，解决踏墙时触发二段跳而不是普通跳
-        if (Input.GetKeyDown(KeyCode.Space) && canDoubleJump == true && canJump == false && isDashing == false && affectedByHurt == false)
+        if (Input.GetKeyDown(KeyCode.Space) && canDoubleJump == true && canJump == false && isDashing == false && affectedByHurt == false && isObtainDoubleJump)
         {
             PlayDoubleJumpSoundEffect();
             canDoubleJump = false;
@@ -430,14 +441,14 @@ public class PlayerController : MonoBehaviour
             GameObject go = GameObject.Instantiate<GameObject>(doubleJumpEffect, gameObject.transform.position + new Vector3(0, 0.0535261f, 0), Quaternion.identity);
             go.transform.eulerAngles = new Vector3(-78, 0, 0);
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && canDoubleJump == true && canJump == false && isDashing == true) //Double Jump After Air Dash Timer
+        else if (Input.GetKeyDown(KeyCode.Space) && canDoubleJump == true && canJump == false && isDashing == true && isObtainDoubleJump) //Double Jump After Air Dash Timer
         {
             PlayDoubleJumpSoundEffect();
             doubleJumpAfterAirDashTimer = true;
         }
         
         //Dash
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isDashing == false && canDash == true && isGround == true && isSliding == false)  //Ground Dash
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isDashing == false && canDash == true && isGround == true && isSliding == false && isObtainDash)  //Ground Dash
         {
             PlayDashSoundEffect();
             isDashing = true;
@@ -447,7 +458,7 @@ public class PlayerController : MonoBehaviour
             canDash = false;  //|
             lastDashTime = Time.time;
         }                                                                                                                                                          
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isDashing == false && canDash == false && canAirDash == true && isGround == false && isSliding == false)  //Air Dash
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && isDashing == false && canDash == false && canAirDash == true && isGround == false && isSliding == false && isObtainDash)  //Air Dash
         {
             PlayDashSoundEffect();
             canAirDash = false;
@@ -459,7 +470,7 @@ public class PlayerController : MonoBehaviour
             lastDashTime = Time.time;
             isAfterAirDash = true;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isSliding == true && canWallSlideDash == true)  //Slide Wall Dash
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && isSliding == true && canWallSlideDash == true && isObtainDash && isObtainWallSlide)  //Slide Wall Dash
         {
             PlayDashSoundEffect();
             Flip();
