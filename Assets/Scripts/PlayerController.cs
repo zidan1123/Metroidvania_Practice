@@ -115,6 +115,12 @@ public class PlayerController : MonoBehaviour
     public bool CanMove { get { return canMove; } set { canMove = value; } }
     public bool CanFlip { get { return canFlip; } set { canFlip = value; } }
 
+    //Jump
+    public bool CanJump { get { return canJump; } set { canJump = value; } }
+    
+    //Ground
+    public bool IsGround { get { return isGround; } }
+
     //Attack
     public bool CanAttack { get { return canAttack; } set { canAttack = value; } }
 
@@ -229,14 +235,14 @@ public class PlayerController : MonoBehaviour
                 if (isFootStep == false)  //走路时开启脚步声 (待优化)
                 {
                     isFootStep = true;
-                    InvokeRepeating("PlayFootStepAudio", 0, 0.4f);
+                    //InvokeRepeating("PlayFootStepAudio", 0, 0.4f);
                 }
             }
             else if (m_Rigidbody2D.velocity.x == 0 || !isGround)
             {
                 isWalking = false;
                 isFootStep = false;
-                CancelInvoke("PlayFootStepAudio");
+                //CancelInvoke("PlayFootStepAudio");
             }
 
             
@@ -375,7 +381,7 @@ public class PlayerController : MonoBehaviour
             if (isFootStep == true)
             {
                 isFootStep = false;
-                CancelInvoke("PlayFootStepAudio");
+                //CancelInvoke("PlayFootStepAudio");
             }
         }                                                                                  //↓滑墙时同时按跳和跳跃方向的方向键，会出现转身了才跳的情况，所以滑墙跳时确保脸靠墙。
         else if (isSliding == true && Input.GetKeyDown(KeyCode.Space) && canJump == true && isWall == true)  //WallSlideJump
@@ -651,7 +657,7 @@ public class PlayerController : MonoBehaviour
         if (isFootStep == true)
         {
             isFootStep = false;
-            CancelInvoke("PlayFootStepAudio");
+            //CancelInvoke("PlayFootStepAudio");
         }
 
         //冲刺时撞到怪物
