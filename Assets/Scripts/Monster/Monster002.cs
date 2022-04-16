@@ -15,6 +15,8 @@ public class Monster002 : MonoBehaviour
     [HideInInspector] private bool isLife = true;
     [HideInInspector] private bool facingRight = true;
 
+    private float[] attackDetails = new float[2];
+
     public int HP
     {
         get { return hp; }
@@ -309,7 +311,9 @@ public class Monster002 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().HP -= this.Attack;
+            attackDetails[0] = attack;
+            attackDetails[1] = m_Transform.position.x;
+            collision.gameObject.SendMessage("Damage", attackDetails);
         }
     }
 

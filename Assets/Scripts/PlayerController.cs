@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Transform m_Transform;
     private Rigidbody2D m_Rigidbody2D;
     private BoxCollider2D m_BoxCollider2D;
+    private SpriteRenderer m_SpriteRenderer;
     private Animator m_Animator;
     private AudioSource[] m_AudioSource;
     private Transform ground_Sensor;
@@ -95,7 +96,8 @@ public class PlayerController : MonoBehaviour
     private Transform dust_Transform;
 
     //Hurt
-    //[SerializeField] private float invincibleTime = 0.5f;    //无敌时间，未制作
+    [SerializeField] private float startInvincibleTime;
+    [SerializeField] private float invincibleTime = 1.6f;
     [SerializeField] private bool affectedByHurt = false;
 
     //Life
@@ -172,10 +174,12 @@ public class PlayerController : MonoBehaviour
             if (hp > 0)
             {
                 StartCoroutine("Hurt");
+                StartCoroutine("GetInvulnerable");
             }
             else if (hp <= 0)
             {
-                StartCoroutine("Dead");
+                if (isLife)
+                    StartCoroutine("Dead");
             }
             RefreshHPUI();
         }
@@ -206,6 +210,7 @@ public class PlayerController : MonoBehaviour
         m_Transform = gameObject.GetComponent<Transform>();
         m_Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         m_BoxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        m_SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         m_Animator = gameObject.GetComponent<Animator>();
         m_AudioSource = gameObject.GetComponents<AudioSource>();
         ground_Sensor = m_Transform.Find("Ground_Sensor");
@@ -255,8 +260,6 @@ public class PlayerController : MonoBehaviour
                 isFootStep = false;
                 //CancelInvoke("PlayFootStepAudio");
             }
-
-            
 
             //fall
             if (m_Animator.GetBool("Jump") && m_Rigidbody2D.velocity.y < 0)  //Falling
@@ -379,7 +382,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Jump and WallSlideJump
-        if (isGround == true && Input.GetKeyDown(KeyCode.Space) && canJump == true)  //Jump
+        if (isGround == true && Input.GetKeyDown(KeyCode.Space) && canJump == true && !affectedByHurt)  //Jump
         {
             m_Animator.SetBool("Jump", true);
             m_Animator.SetBool("Ground", false); //
@@ -429,7 +432,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //DoubleJump                                                    //↓为了确保能普通跳就不二段跳，解决踏墙时触发二段跳而不是普通跳
-        if (Input.GetKeyDown(KeyCode.Space) && canDoubleJump == true && canJump == false && isDashing == false && affectedByHurt == false && isObtainDoubleJump)
+        if (Input.GetKeyDown(KeyCode.Space) && canDoubleJump == true && canJump == false && isDashing == false && !affectedByHurt && isObtainDoubleJump)
         {
             PlayDoubleJumpSoundEffect();
             canDoubleJump = false;
@@ -555,15 +558,35 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Monster")
-        {
-            StartCoroutine("Hurt");
-        }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Trap"))
         {
-            this.HP--;
-            StartCoroutine("Hurt");
+            if (Time.time > startInvincibleTime + invincibleTime)
+            {
+                this.HP--;
+            }
         }
+    }
+
+    private void Damage(float[] attackDetails) //[1]元素暂未使用
+    {
+        if (Time.time > startInvincibleTime + invincibleTime)
+        {
+            this.HP -= (int)attackDetails[0];
+        }
+    }
+
+    private IEnumerator GetInvulnerable()
+    {
+        Physics2D.IgnoreLayerCollision(8, 7, true); //7:monster
+        Physics2D.IgnoreLayerCollision(8, 9, true); //9:trap
+        Color color = m_SpriteRenderer.material.color;
+        color.a = 0.5f;
+        m_SpriteRenderer.material.color = color;
+        yield return new WaitForSeconds(invincibleTime);
+        Physics2D.IgnoreLayerCollision(8, 7, false);
+        Physics2D.IgnoreLayerCollision(8, 9, false);
+        color.a = 1f;
+        m_SpriteRenderer.material.color = color;
     }
 
     private void PlayFootStepAudio()
@@ -657,6 +680,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Hurt()
     {
+        startInvincibleTime = Time.time;
         m_Animator.SetBool("Hurt", true);
         affectedByHurt = true;
 
