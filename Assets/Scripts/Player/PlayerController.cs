@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private AudioSource[] m_AudioSource;
     private Transform ground_Sensor;
 
+    private PlayerModel m_PlayerModel;
+    public Player playerAbilityInfo;
+
     //Move
     [Header("Move")]
     [SerializeField] private float speed = 5f;
@@ -199,40 +202,9 @@ public class PlayerController : MonoBehaviour
     //    }
     //}
 
-    void Start()
+    void Awake()
     {
         Init();
-    }
-
-    private void Init()
-    {
-        //Component
-        m_Transform = gameObject.GetComponent<Transform>();
-        m_Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-        m_BoxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-        m_SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        m_Animator = gameObject.GetComponent<Animator>();
-        m_AudioSource = gameObject.GetComponents<AudioSource>();
-        ground_Sensor = m_Transform.Find("Ground_Sensor");
-        attack_Transform = m_Transform.Find("Attack_Positon");
-        dust_Transform = m_Transform.Find("Dust_Position");
-        //forwardCheck_FarDown = m_Transform.Find("Forward Check(FarDown)");
-        forwardCheck_NearUp = m_Transform.Find("Forward Check(NearUp)");
-        //forwardCheck_Middle = m_Transform.Find("Forward Check(Middle)");
-
-        hearts = GameObject.Find("Canvas/PlayerInfoPanel").GetComponentsInChildren<Image>();  //The Image of the PlayerInfoPanel has been removedand only the Image of the child object is found
-        fullHeart_Sprite = Resources.Load<Sprite>("Sprites/FullHeart");
-        emptyHeart_Sprite = Resources.Load<Sprite>("Sprites/EmptyHeart");
-
-        m_FootStepAudios = Resources.LoadAll<AudioClip>("StandardAudio/Footstep");
-        attack_SoundEffect = Resources.Load<AudioClip>("Audios/Hollow Knight Attack");
-        dash_SoundEffect = Resources.Load<AudioClip>("Audios/Hollow Knight Dash");
-        doubleJump_SoundEffect = Resources.Load<AudioClip>("Audios/Double Jump");
-        doubleJumpEffect = Resources.Load<GameObject>("Prefabs/Effects/BlockFlash");
-        dashEffect = Resources.Load<GameObject>("Prefabs/Effects/HeroKnight_BlockNoEffect_0");
-        dustEffect = Resources.Load<GameObject>("Prefabs/Effects/SlideDust");
-
-        wallSlideInterruptTimer = startWallSlideInterruptTimer;
     }
 
     void Update()
@@ -344,6 +316,56 @@ public class PlayerController : MonoBehaviour
             CheckDash();
         }
     }
+
+    private void Init()
+    {
+        // playerAbilityList = 
+
+        //Component
+        m_Transform = gameObject.GetComponent<Transform>();
+        m_Rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+        m_BoxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        m_SpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        m_Animator = gameObject.GetComponent<Animator>();
+        m_AudioSource = gameObject.GetComponents<AudioSource>();
+
+        m_PlayerModel = gameObject.GetComponent<PlayerModel>();
+        playerAbilityInfo = m_PlayerModel.GetAbilityInfoByFileName("PlayerAbility");
+
+        ground_Sensor = m_Transform.Find("Ground_Sensor");
+        attack_Transform = m_Transform.Find("Attack_Positon");
+        dust_Transform = m_Transform.Find("Dust_Position");
+        //forwardCheck_FarDown = m_Transform.Find("Forward Check(FarDown)");
+        forwardCheck_NearUp = m_Transform.Find("Forward Check(NearUp)");
+        //forwardCheck_Middle = m_Transform.Find("Forward Check(Middle)");
+
+        hearts = GameObject.Find("Canvas/PlayerInfoPanel").GetComponentsInChildren<Image>();  //The Image of the PlayerInfoPanel has been removedand only the Image of the child object is found
+        fullHeart_Sprite = Resources.Load<Sprite>("Sprites/FullHeart");
+        emptyHeart_Sprite = Resources.Load<Sprite>("Sprites/EmptyHeart");
+
+        m_FootStepAudios = Resources.LoadAll<AudioClip>("StandardAudio/Footstep");
+        attack_SoundEffect = Resources.Load<AudioClip>("Audios/Hollow Knight Attack");
+        dash_SoundEffect = Resources.Load<AudioClip>("Audios/Hollow Knight Dash");
+        doubleJump_SoundEffect = Resources.Load<AudioClip>("Audios/Double Jump");
+        doubleJumpEffect = Resources.Load<GameObject>("Prefabs/Effects/BlockFlash");
+        dashEffect = Resources.Load<GameObject>("Prefabs/Effects/HeroKnight_BlockNoEffect_0");
+        dustEffect = Resources.Load<GameObject>("Prefabs/Effects/SlideDust");
+
+        wallSlideInterruptTimer = startWallSlideInterruptTimer;
+
+        PlayerAbilityInit();
+    }
+
+    private void PlayerAbilityInit()
+    {
+        if(playerAbilityInfo.IsObtainDash == 1)
+            isObtainDash = true;
+        if(playerAbilityInfo.IsObtainDoubleJump == 1)
+            isObtainDoubleJump = true;
+        if(playerAbilityInfo.IsObtainWallSlide == 1)
+            isObtainWallSlide = true;
+    }
+
 
     private void CheckInput()
     {

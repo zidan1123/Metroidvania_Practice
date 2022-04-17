@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 799439338590564947}
   - component: {fileID: 799439338590564951}
   - component: {fileID: 799439338590564950}
+  - component: {fileID: 2971223170072153507}
   - component: {fileID: 799439338590564953}
   - component: {fileID: 799439338590564952}
   m_Layer: 8
@@ -262,8 +263,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ded39ad7e62e2c4f8033588e72db73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isObtainDash: 0
+  isObtainDoubleJump: 0
+  isObtainWallSlide: 0
   speed: 5
   canMove: 1
+  canFlip: 1
   isWalking: 1
   forwardCheck_NearUp: {fileID: 799439339416582088}
   isWall: 0
@@ -295,15 +300,28 @@ MonoBehaviour:
   affectedByRecoil: 0
   recoilForce: 4
   isSliding: 0
-  isWallSlideJumping: 0
   wallSlideJumpingDuration: 0.2
   wallSlideJumpCounterForce: 8
   wallSlideSpeed: 2.5
   wallSlideJumpSpeed: 14.4
   wallSlideInterruptTimer: 0.025
   startWallSlideInterruptTimer: 0.025
+  startInvincibleTime: 0
+  invincibleTime: 0.7
   affectedByHurt: 0
   hp: 5
+--- !u!114 &2971223170072153507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799439338590564944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82849a679ab3224bb98eb8052e785be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &799439338590564953
 AudioSource:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class Talkable : MonoBehaviour
             //isEntered = true;
             DialogPanelController.Instance.SetCurrentDialog(dialogID);
             DialogPanelController.Instance.SetHintPositionAndOffset(gameObject.transform.position, y_Offset);
-            Debug.Log(gameObject.transform.position + "-" + y_Offset);
+            //Debug.Log(gameObject.transform.position + "-" + y_Offset);
         }
     }
     
