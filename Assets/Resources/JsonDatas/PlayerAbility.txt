@@ -1,1 +1,5 @@
-{"IsObtainDash":1,"IsObtainDoubleJump":1,"IsObtainWallSlide":1}
+{
+  "IsObtainDash": 0,
+  "IsObtainDoubleJump": 0,
+  "IsObtainWallSlide": 0
+}

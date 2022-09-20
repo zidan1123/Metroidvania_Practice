@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer m_SpriteRenderer;
     private Animator m_Animator;
     private AudioSource[] m_AudioSource;
-    private Transform ground_Sensor;
+    [SerializeField] private Transform ground_Sensor;
 
     private PlayerModel m_PlayerModel;
     public Player playerAbilityInfo;
@@ -593,19 +593,25 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.time > startInvincibleTime + invincibleTime)
         {
+            //检查是前还是后攻击，调整击退方向
+            if (((attackDetails[1] > m_Transform.position.x) && facingDirection == -1) || ((attackDetails[1] < m_Transform.position.x) && facingDirection == 1))
+            {
+                Flip();
+            }
+
             this.HP -= (int)attackDetails[0];
         }
     }
 
     private IEnumerator GetInvulnerable()
     {
-        Physics2D.IgnoreLayerCollision(8, 7, true); //7:monster
+        //Physics2D.IgnoreLayerCollision(8, 7, true); //7:monster
         Physics2D.IgnoreLayerCollision(8, 9, true); //9:trap
         Color color = m_SpriteRenderer.material.color;
         color.a = 0.5f;
         m_SpriteRenderer.material.color = color;
         yield return new WaitForSeconds(invincibleTime);
-        Physics2D.IgnoreLayerCollision(8, 7, false);
+        //Physics2D.IgnoreLayerCollision(8, 7, false);
         Physics2D.IgnoreLayerCollision(8, 9, false);
         color.a = 1f;
         m_SpriteRenderer.material.color = color;
@@ -706,6 +712,8 @@ public class PlayerController : MonoBehaviour
         m_Animator.SetBool("Hurt", true);
         affectedByHurt = true;
 
+        canFlip = false;
+
         //--------这堆代码块是Jump方法一部分抄过来的------因为受攻击后状态类似
         //StartCoroutine("DelaySecondsAndStartDetectGround");
         isGround = false;
@@ -723,7 +731,7 @@ public class PlayerController : MonoBehaviour
             DashDone();
         }
 
-        //Shock From The Monster   //应该要根据命中时，角色在怪物中心点左边还是右边，左边的话冲击往左，右边则反(←之后才更改成这样)
+        //Shock From The Monster
         if (facingRight == true)
         {
             m_Rigidbody2D.velocity = new Vector2(-5, 9);
@@ -739,6 +747,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.273f);
         m_Animator.SetBool("Hurt", false);
         affectedByHurt = false;
+
+        canFlip = true;
     }
 
     private void RefreshHPUI() //可以改成改变具体编号的爱心图片，而不是遍历一遍
@@ -783,5 +793,6 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attack_Transform.position, attackRadius);
         Gizmos.DrawLine(forwardCheck_NearUp.position, forwardCheck_NearUp.position + forwardCheck_NearUp.right * 0.02f);
+        Gizmos.DrawWireSphere(ground_Sensor.position, 0.0001f);
     }
 }

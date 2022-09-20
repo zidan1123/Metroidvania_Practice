@@ -15,7 +15,7 @@ public class Monster001 : MonoBehaviour
     [HideInInspector] private bool isLife = true;
     [HideInInspector] private bool facingRight = true;
 
-    private float[] attackDetails = new float[2];
+    public float[] attackDetails = new float[2];
 
     public int HP
     {
@@ -42,7 +42,7 @@ public class Monster001 : MonoBehaviour
     }
 
     //Component
-    private Transform m_Transform;
+    public Transform m_Transform;
     private Rigidbody2D m_Rigidbody2D;
     private SkeletonAnimation m_SkeletonAnimation;
     private GameObject bloodEffect;
@@ -143,17 +143,6 @@ public class Monster001 : MonoBehaviour
             m_Transform.eulerAngles = new Vector3(0, 180, 0);
         }
         facingRight = !facingRight;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        m_Rigidbody2D.velocity = Vector2.zero; //确保怪物不被主角撞飞
-        if (collision.gameObject.tag == "Player")
-        {
-            attackDetails[0] = attack;
-            attackDetails[1] = m_Transform.position.x;
-            collision.gameObject.SendMessage("Damage", attackDetails);
-        }
     }
 
     private void OnDrawGizmos()

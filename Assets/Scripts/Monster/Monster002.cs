@@ -15,7 +15,7 @@ public class Monster002 : MonoBehaviour
     [HideInInspector] private bool isLife = true;
     [HideInInspector] private bool facingRight = true;
 
-    private float[] attackDetails = new float[2];
+    public float[] attackDetails = new float[2];
 
     public int HP
     {
@@ -42,7 +42,7 @@ public class Monster002 : MonoBehaviour
     }
 
     //Component
-    private Transform m_Transform;
+    public Transform m_Transform;
     private Rigidbody2D m_Rigidbody2D;
     private SkeletonAnimation m_SkeletonAnimation;
     private GameObject bloodEffect;
